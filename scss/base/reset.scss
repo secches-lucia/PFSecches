@@ -1,0 +1,26 @@
+@import '../utilidades/variables';
+@import '../utilidades/mixin';
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style-type: none;
+    font-family: $font-family;
+  }
+  
+  html, body {
+    @include medidas(100%, 100%);
+  }
+  
+  body {
+    display: flex;
+    flex-direction: column;
+    header {
+        background-color: $text-color-1;
+        h1, a {
+            color: $text-color-3;
+            text-decoration: none;
+        }
+      }
+  }
