@@ -2,3 +2,9 @@
     width: $width;
     height: $height;
 }
+
+@mixin flex{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}

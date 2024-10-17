@@ -98,8 +98,8 @@ body footer {
   .grid-navegacion {
     display: flex;
     flex-direction: column;
-    row-gap: 1em;
     text-align: center;
+    row-gap: 1em;
     margin: 0 auto;
     width: 90%;
     height: 100%;
@@ -112,8 +112,8 @@ body footer {
   .grid-navegacion {
     display: flex;
     flex-direction: column;
-    row-gap: 1em;
     text-align: center;
+    row-gap: 1em;
     margin: 0 auto;
     width: 90%;
     height: 100%;
