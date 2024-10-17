@@ -9,10 +9,6 @@
     font-family: $font-family;
   }
   
-  html, body {
-    @include medidas(100%, 100%);
-  }
-  
   body {
     display: flex;
     flex-direction: column;

@@ -4,15 +4,19 @@
 
 body {
     header {
-        a:hover {
-            color: $background-color-4;
-            transition: ease-in 0.2s;
-        }
-        nav span {
-            text-decoration: underline;
+        nav{
+            a:hover {
+                color: $background-color-4;
+                transition: ease-in 0.2s;
+            }
+            span {
+                text-decoration: underline;
+            }
         }
     }
     main {
+
+        //General
         background-color: $background-color-3;
         display: flex;
         flex-direction: column;
@@ -25,105 +29,136 @@ body {
         .italic {
             font-style: italic;
         }
-        #section-biografia, .section-discografia h3, .section-discografia h4, .section-discografia p, .section-titulo, .section-titulo + p, #section-tour-mapa h3 {
+        #section-biografia, .section-discografia h3, .section-discografia h4, .section-discografia p, .section-titulo, .section-titulo + p, #section-tour h3 {
             color: $text-color-1;
         }
         #section-cita {
             color: $text-color-3;
             background-color: $background-color-2;
         }
+
+        //Discografía
+        #section-titulo-discografia {
+            margin: 2em;
+        }
         .section-discografia {
             padding-bottom: 3em;
-            img{
-                @include medidas(100%, 100%);
+            div {
+                img{
+                    @include medidas(100%, 100%);
+                }
             }
             div + div {
-                display: flex;
-                flex-direction: column;
-            }
-            p {
-                text-align: justify;
-                font-size: 1.3em;
-            }
-            h3 {
-                font-size: 2em;
+                @include flex;
+                h3 {
+                    font-size: 2em;
+                    padding: 1em 0;
+                }
+                p {
+                    text-align: justify;
+                    font-size: 1.3em;
+                }
             }
             .list-canciones {
-                display: flex;
-                flex-direction: column;
+                @include flex;
                 align-items: center;
                 @include medidas(100%, 100%);
                 li{
                     padding: 1em;
                     display: flex;
                     justify-content: space-between;
-                }
-                li:nth-child(odd){
-                    background-color: $background-color-2;
-                    color: $text-color-5;
-                }
-                li:nth-child(even){
-                    background-color: $background-color-4;
-                    color: $text-color-2;
+                    &:nth-child(odd){
+                        background-color: $background-color-2;
+                        color: $text-color-5;
+                    }
+                    &:nth-child(even){
+                        background-color: $background-color-4;
+                        color: $text-color-2;
+                    }
                 }
             }
         }
-        #section-tour-mapa {
+
+        // Tour
+        #section-tour {
             margin: 2em;
             padding: 2em;
-            div h3 {
+            div {
+                div{
+                    a{
+                        img{
+                            cursor: pointer;
+                        }
+                        &:hover{
+                            filter: drop-shadow(0 0 2em $background-color-1);
+                        }
+                    }
+                }
+            }
+            div {
+                h3 {
+                    text-align: center;
+                }
+            }
+        }
+
+        // Contacto
+        #main-contacto {
+            @include flex;
+                gap: 1em;
+                align-items: center;
+                padding: 3em;
+            h2 {
+                font-size: 2em;
+                padding: 1em;
+            }
+            p {
+                font-size: 1.2em;
                 text-align: center;
             }
         }
-    #main-contacto {
-        display: flex;
-        flex-direction: column;
-        gap: 1em;
-        align-items: center;
-        padding: 3em;
-        h2 {
-            font-size: 2em;
-            padding: 1em;
-        }
-        p {
-            font-size: 1.2em;
-            text-align: center;
-        }
-    }
-    #form-container {
-        @include medidas(100%, 100%);
-        #form-div {
-            background-color: #6547914d; // 30% de opacidad - $background-color-2
-            padding: 2em;
-            margin: 0 auto;
-            label {
-                color: $text-color-1;
-                a {
-                    color: #1f014d;
-                }
-            }
-            input, textarea {
-                background-color: $text-color-5;
-                border: 5px solid #00000000; // 0% de opacidad;
-            }                 
-            #btn-form {
-                cursor: pointer;
-                background-color: $background-color-1;
-                color: $text-color-3;
-                padding: 1.2em;
-                margin-top: 4em;
+        #form-container {
+            @include medidas(100%, 100%);
+            #form-div {
+                background-color: #6547914d; // 30% de opacidad - $background-color-2
+                padding: 2em;
+                margin: 0 auto;
+                form {
+                    padding-bottom: 1.8em;
+                    label {
+                    color: $text-color-1;
+                        a {
+                        color: #1f014d;
+                        }
+                    }
+                    input, textarea {
+                        background-color: $text-color-5;
+                        border: 5px solid #00000000; // 0% de opacidad;
+                    }
+                    .submit {
+                        #btn-form {
+                            cursor: pointer;
+                            background-color: $background-color-1;
+                            color: $text-color-3;
+                            padding: 1.2em;
+                            margin-top: 4em;
+                            &:hover {
+                                background-color: darken($background-color-1, 10%);
+                                transition: 0.3s ease;
+                            }
+                        }
+                    }
+                }          
             }
         }
-        form {
-            padding-bottom: 1.8em;
-        }
     }
-}
 
-footer {
-    color: $footer-text-color;
-    background-color: $footer-background-color;
-}
+    footer {
+        color: $footer-text-color;
+        background-color: $footer-background-color;
+    }
+
+
 
 // Responsive DESKTOP
 @media only screen and (min-width: 1200px) {
@@ -131,27 +166,35 @@ footer {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        h1{
-            font-size: 1.7em;
-        }
+        position: sticky;
+        top: 0;
+        z-index: 1000;
         h1, nav {
             padding: 1em;
+        }
+        h1{
+            font-size: 1.7em;
         }
         nav {
             ul {
                 display: flex;
                 gap: 2em;
-                padding: 1em 1em 0 0;
+                padding: 1em;
                 li {
                     font-size: 1.1em;
                     text-align: center;
+                    &:hover {
+                        font-size: 1.5em;
+                        transition: font-size 0.3s ease;
+                    }
                 }
             }
         }
     }
+    
     main {
         padding: 0 10em;
-        
+
         // Sobre Wolf
         #section-introduccion{
             display: flex;
@@ -162,7 +205,7 @@ footer {
                 @include medidas(100%, 100%);
                 margin-right: 1em;
                 h2 {
-                    margin: 2em 1em 0 0em;
+                    margin: 2em 1em 0 0;
                     font-size: 2.5em;
                     padding-bottom: 1em;
                 }
@@ -171,10 +214,12 @@ footer {
                     font-size: 1em;
                 }
             }
-            img{
-                margin: 5em 1em 0 2em;
-                @include medidas(95%, auto);
-                padding-bottom: 2em;
+            div + div {
+                img{
+                    @include medidas(95%, auto);
+                    margin: 5em 1em 0 2em;
+                    padding-bottom: 2em;
+                }
             }
         }
         #section-cita {
@@ -182,18 +227,22 @@ footer {
             justify-content: space-between;
             align-items: center;
             font-size: 1.2em;
-            img {
-                @include medidas(100%, 100%);
-                padding: 1em;
+            div {
+                img {
+                    @include medidas(100%, 100%);
+                    padding: 1em;
+                }
             }
-            blockquote {
-                font-size: 1.2em;
-                text-align: center;
-                font-style: italic;
-                padding: 1em 2em;
-                @include medidas(90%, 100%);
+            div + div {
+                blockquote {
+                    font-size: 1.2em;
+                    text-align: center;
+                    font-style: italic;
+                    padding: 1em 2em;
+                    @include medidas(90%, 100%);
+                }
             }
-        } 
+        }
         #section-biografia {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -209,9 +258,6 @@ footer {
         }
 
         // Discografía
-        #section-titulo-discografia {
-            margin: 2em;
-        }
         .section-discografia {
             div + div {
                 margin: 4em 2em 0em 2em;
@@ -221,36 +267,67 @@ footer {
                 padding: 1em 0em 2em 0;
                 font-size: 1.7em;
             }
-            li {
-                padding: 1em;
-                @include medidas(100vh, auto);
+            .list-canciones {
+                ol {
+                    li {
+                        padding: 1em;
+                        @include medidas(100vh, auto);
+                    }
+                }
             }
         }
-        #section-tour-mapa {
-            h2 {
-                padding-bottom: 0.7em;
+
+        // Tour
+        #section-tour {
+            div:nth-child(1) {
+                display: grid;
+                grid-template-columns: repeat(2, 2fr);
+                padding-bottom: 3em;
+                h2 {
+                    text-align: center;
+                    font-size: 2.5em;
+                    padding-bottom: 0.8em;
+                    grid-column: 1/-1;
+                }
+                p {
+                    font-size: 1.2em;
+                    padding: 3em 6em;
+                }
+                div {
+                    a {
+                        img {
+                            @include medidas(50%, auto);
+                            margin: 2em 0 0 17em;
+                        }
+                    }
+                }
+                
             }
             hr {
                 margin-top: 5em;
             }
-            h3 {
-            font-size: 1.7em;
-            padding-top: 2em;
-            }
-            #grid-tour{
-                display: grid;
-                grid-template-columns: 1fr 1fr;
-                gap: 2em;
-                padding: 2em 2em;
-                margin: 2em;
-                iframe{
-                    border: none;
-                    @include medidas(100%, 100%);
+            div {
+                h3 {
+                font-size: 1.7em;
+                padding-top: 2em;
                 }
-                img{
-                    @include medidas(100%, 100%);
+                #grid-tour{
+                    display: grid;
+                    grid-template-columns: 1fr 1fr;
+                    gap: 2em;
+                    padding: 2em 2em;
+                    margin: 2em;
+                    iframe{
+                        border: none;
+                        @include medidas(100%, 100%);
+                    }
+                    div {
+                        img {
+                            @include medidas(100%, 100%);
+                        }
+                    }
                 }
-            }
+            }    
         }
     }
 
@@ -264,39 +341,47 @@ footer {
         p {
             padding-bottom: 1em;
         }
-        #form-div {
-            @include medidas(100vh, auto);
-            p {
-                font-size:  1em;       
-            }
-            .form-datos {
-               line-height: 150%;
-                padding: 0.2em;
-                @include medidas(100%, 100%);;
-                textarea {
-                    @include medidas(100%, 100%);
-                    line-height: 150%;
+        #form-container {
+            #form-div {
+                @include medidas(100vh, auto);
+                form {
+                    p {
+                        font-size:  1em;
+                        .form-datos {
+                            line-height: 150%;
+                            padding: 0.2em;
+                            @include medidas(100%, 100%);
+                        }
+                        textarea {
+                            @include medidas(100%, 100%);
+                            line-height: 150%;
+                        }     
+                    }
+                    .submit {
+                        #btn-form {
+                            @include medidas(100%, 100%);
+                            font-size: 1.3em;
+                        }
+                    }
                 }
-            }
-            #btn-form {
-                @include medidas(100%, 100%);
-                font-size: 1.3em;
             }
         }
     }
 }
 
+
+
 // Responsive TABLET
 @media only screen and (min-width: 601px) and (max-width: 1199px) {
     header {
+        h1, nav {
+            padding: 1em;
+        }
         display: flex;
         justify-content: space-between;
         align-items: center;
         h1 {
             font-size: 1.5em;
-        }
-        h1, nav {
-            padding: 1em;
         }
         nav {
             ul {
@@ -313,8 +398,7 @@ footer {
 
     // Sobre Wolf
     #section-introduccion {
-        display: flex;
-        flex-direction: column;
+        @include flex;
         align-items: center;
         margin: 2em;
         font-size: 1.2em;
@@ -331,30 +415,34 @@ footer {
                 font-size: 1.2em;
             }
         }
-        img {
-            @include medidas(100%, 100%);
+        div + div {
+            img {
+                @include medidas(100%, 100%);
+            }
         }
     }
     #section-cita {
-        display: flex;
-        flex-direction: column;
-        img {
-            @include medidas(30%, 100%);
-            margin: 0 auto;
-            display: block;
-            padding-top: 2em;
+        @include flex;
+        div {
+            img {
+                @include medidas(30%, 100%);
+                margin: 0 auto;
+                display: block;
+                padding-top: 2em;
+            }
         }
-        blockquote {
-            font-size: 1.5em;
-            text-align: center;
-            font-style: italic;
-            padding: 2em 4em;
-            @include medidas(100%, 100%);
+        div + div {
+            blockquote {
+                font-size: 1.5em;
+                text-align: center;
+                font-style: italic;
+                padding: 2em 4em;
+                @include medidas(100%, 100%);
+            }
         }
     }
     #section-biografia {
-        display: flex;
-        flex-direction: column;
+        @include flex;
         gap: 1em;
         justify-content: center;
         margin: 2em;
@@ -367,15 +455,16 @@ footer {
 
     // Discografía
     #section-titulo-discografia {
-        margin-top: 2em;
         text-align: center;
         font-size: 2.5em;
     }
     .section-discografia {
         margin: 2em;
         padding: 2em;
-        h3 {
-            padding: 2em 0 1em 0;
+        div {
+            h3 {
+                padding: 2em 0 1em 0;
+            }
         }
         h4 {
             padding-top: 2em;
@@ -391,43 +480,61 @@ footer {
                 display: flex;
                 flex-direction: column;
                 align-items: center;
-            li {
-                @include medidas(100%, auto);
-            }
+                li {
+                    @include medidas(100%, auto);
+                }
             }
         }
     }
 
     // Tour
-    #section-tour-mapa {
+    #section-tour {
         div:nth-child(1) {
+            display: grid;
+            grid-template-columns: repeat(2, 2fr);
             padding-bottom: 3em;
             h2 {
                 font-size: 2.5em;
                 padding-bottom: 0.8em;
+                grid-column: 1/-1;
             }
             p {
                 font-size: 1.2em;
+                padding: 1em 0;
+            }
+            div {
+                a {
+                    img {
+                        @include medidas(80%, auto);
+                        margin-left: 5em;
+                    }
+                }
             }
         }
-        h3 {
-            font-size: 1.7em;
-            margin-top: 2em;
-        }
-        #grid-tour {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 1.5em;
-            padding: 2em;
-            margin: 2em;
-            iframe {
-                border: none;
-                @include medidas(100%, 30em);
+        div {
+            h3 {
+                font-size: 1.7em;
+                margin-top: 2em;
             }
-            img {
-                @include medidas(100%, 100%);
+            #grid-tour {
+                display: grid;
+                grid-template-columns: 1fr;
+                gap: 1.5em;
+                padding: 2em;
+                margin: 2em;
+                iframe {
+                    border: none;
+                    @include medidas(100%, 30em);
+                }
+                div {
+                    img {
+                        @include medidas(100%, 100%);
+                    }
+                }
             }
         }
+
+
     }
 
     // Contacto
@@ -443,23 +550,34 @@ footer {
             font-size: 1.2em;
             padding: 0.5em;
         }
-        #form-div {
-            .form-datos {
-                @include medidas(100%, auto);
-            }
-            div {
-                font-size: 1em;
-                text-align: center;
-            }
-            #btn-form {
-                font-size: 1.2em;
-                @include medidas(70%, 100%);
-                margin: 0 auto;
-                display: block;
+        #form-container {
+            #form-div {
+                form {
+                    p {
+                        .form-datos {
+                            @include medidas(100%, auto);
+                        }
+                    }
+                    div {
+                        font-size: 1em;
+                        text-align: center;
+                        padding-bottom: 2em;
+                    }
+                    .submit {
+                        #btn-form {
+                            font-size: 1.2em;
+                            @include medidas(70%, 100%);
+                            margin: 0 auto;
+                            display: block;
+                        }
+                    }
+                }
             }
         }
     } 
 }
+
+
 
 // Responsive MOBILE
 @media only screen and (max-width: 600px) {
@@ -486,36 +604,43 @@ footer {
     }
 
     main {
-        //Sobre Wolf
-        .section-titulo h2 {
-            color: $text-color-1;
-            text-align: center;
-            font-size: 1.5em;
-            padding: 1em 0;
-        }
+        // Sobre Wolf
         #section-introduccion {
             display: flex;
             flex-direction: column;
             margin: 2em 0em;
             padding: 2em;
             text-align: justify;
-            img {
-                @include medidas(100%, 100%);
+            #text-introduccion {
+                h2 {
+                    text-align: center;
+                    font-size: 1.5em;
+                    padding: 1em 0;
+                }
+            }
+            div + div {
+                img {
+                    @include medidas(100%, 100%);
+                }
             }
         }
         #section-cita {
             display: flex;
             flex-direction: column;
-            img {
-                @include medidas(100%, 100%);
-                padding: 1em;
+            div {
+                img {
+                    @include medidas(100%, 100%);
+                    padding: 1em;
+                }
             }
-            blockquote {
-                font-size: 1em;
-                text-align: justify;
-                font-style: italic;
-                padding: 2em;
-                @include medidas(100%, 100%);
+            div + div {
+                blockquote {
+                    font-size: 1em;
+                    text-align: justify;
+                    font-style: italic;
+                    padding: 2em;
+                    @include medidas(100%, 100%);
+                }
             }
         }
         #section-biografia {
@@ -526,26 +651,27 @@ footer {
             font-size: 1em;
         }
 
-        //Discografía
+        // Discografía
         #section-titulo-discografia {
-            margin: 2em 0;
             text-align: center;
             font-size: 1.7em;
         }
         .section-discografia{
             padding: 2em 0;
+            div {
+                img {
+                    @include medidas(100%, 100%);
+                }
+            }
             div + div {
                 margin: 2em 2em;
+                h3 {
+                    padding-bottom: 0.5em;
+                    font-size: 1.5em;
+                }
                 p {
                     font-size: 1em
                 };
-            }
-            h3 {
-                padding-bottom: 0.5em;
-                font-size: 1.5em;
-            }
-            img {
-                @include medidas(100%, 100%);
             }
             h4 {
                 text-align: center;
@@ -560,33 +686,49 @@ footer {
                     display: flex;
                     flex-direction: column;
                     align-items: center;
-                li {
-                    @include medidas(100%, auto);
-                }
+                    li {
+                        @include medidas(100%, auto);
+                    }
                 }
             }
         }
 
         //Tour
-        #section-tour-mapa {
+        #section-tour {
+            h2, p {
+                text-align: center;
+            }
             h2 {
                 font-size: 1.7em;
                 padding-bottom: 0.5em;
             }
-            h2, p {
-                text-align: center;
+            p {
+                padding: 2em 0;
+                font-size: 1em;
             }
-            div h3{
-                font-size: 1.5em;
-                padding: 1em 0;
-            }
-            #grid-tour {
-                iframe {
-                    border: none;
-                    @include medidas(100%, 30em);
+            div:nth-child(1) {
+                a {
+                    img {
+                        @include medidas(100%, auto);
+                    margin-bottom: 2em;
+                    }
                 }
-                img {
-                    @include medidas(100%, 20em);
+            }
+            div {
+                h3{
+                    font-size: 1.5em;
+                    padding: 1em 0;
+                }
+                #grid-tour {
+                    iframe {
+                        border: none;
+                        @include medidas(100%, 30em);
+                    }
+                    div {
+                        img {
+                            @include medidas(100%, 20em);
+                        }
+                    }
                 }
             }
         }
@@ -605,26 +747,35 @@ footer {
             font-size: 1.1em;
             padding: 0.5em;
         }
-        #form-div {
-            form {
-                padding-bottom: 1.8em;
-            }
-            textarea {
-                @include medidas(100%, 10em);
-            }
-            .form-datos {
-                @include medidas(100%, auto);
-            }
-            div {
-                font-size: 1em;
-                text-align: center;
-            }
-            #btn-form {
-                font-size: 1.2em;
-                @include medidas(70%, 100%);
-                margin: 0 auto;
-                display: block;
+        #form-container {
+            #form-div {
+                form {
+                    padding-bottom: 1.8em;
+                    p {
+                        .form-datos {
+                            @include medidas(100%, auto);
+                        }
+                        textarea {
+                            @include medidas(100%, 10em);
+                        }
+                    }
+                    div {
+                        font-size: 1em;
+                        text-align: center;
+                        padding-bottom: 2em;
+                    }
+                    .submit {
+                        #btn-form {
+                            font-size: 1.2em;
+                            @include medidas(70%, 100%);
+                            margin: 0 auto;
+                            display: block;
+                        }
+                    }
+                }
             }
         }
     } 
-}}
+}
+
+}
