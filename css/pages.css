@@ -143,13 +143,13 @@ body main #form-container #form-div form input, body main #form-container #form-
 }
 body main #form-container #form-div form .submit #btn-form {
   cursor: pointer;
-  background-color: #4b356d;
+  background-color: #644791;
   color: #c2bacf;
   padding: 1.2em;
   margin-top: 4em;
 }
 body main #form-container #form-div form .submit #btn-form:hover {
-  background-color: rgb(51.3888888889, 36.3148148148, 74.6851851852);
+  background-color: #4b356d;
   transition: 0.3s ease;
 }
 body footer {
@@ -277,6 +277,10 @@ body footer {
     width: 50%;
     height: auto;
     margin: 2em 0 0 17em;
+  }
+  body main #section-tour div:nth-child(1) div a img:hover {
+    transform: scale(1.1);
+    transition: 0.3s ease;
   }
   body main #section-tour hr {
     margin-top: 5em;
