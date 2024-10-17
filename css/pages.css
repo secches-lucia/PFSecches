@@ -181,8 +181,8 @@ body footer {
     text-align: center;
   }
   body header nav ul li:hover {
-    font-size: 1.5em;
-    transition: font-size 0.3s ease;
+    transform: scale(1.2);
+    transition: 0.3s ease;
   }
   body main {
     padding: 0 10em;
