@@ -1,5 +1,4 @@
-@import '../utilidades/variables';
-@import '../utilidades/mixin';
+@import '../styles.scss';
 
 body {
     header {
@@ -9,50 +8,52 @@ body {
         }
     }
     main {
-	    background-color: $background-color-3;
+		background-color: $background-color-3;
 	    flex: 1 0 auto;
 	    display: flex;
 	    align-items: center;
 	    padding: 3em 0;
-        h2{
-            color: $text-color-1;
-            font-size: 2em;
-        }
-	    a {
-		    color: $text-color-3;
-		    text-decoration: none;
-		    font-weight: bold;
-	    }
-        .grid-item {
-		    justify-content: center;
-	    	padding: 7% 0;
-	    	background-repeat: no-repeat;
-	    	cursor: pointer;
-	    	border-radius: $border-radius;
-	    	@include medidas(100%, 100%);
-	    	position: relative;
-	    	overflow: hidden;
-	    	background-image: url('../img/img-home.webp');
-	    	&::before {
-	    		content: '';
-	    		position: absolute;
-	    		top: 0;
-	    		left: 0;
-	    		@include medidas(100%, 100%);
-	    		background-color: #00000000;
-	    		transition: background-color 0.3s ease;
-	    		z-index: 1;
-	    	}
-	    	&:hover {
-	    		&::before {
-	    			background-color: #00000080;
-	    		}
-		    }
-		    >* {
-			position: relative;
-			z-index: 2;
-		    }
-	    }
+		.grid-navegacion {
+			h2{
+				color: $text-color-1;
+				font-size: 2em;
+			}
+			a {
+				color: $text-color-3;
+				text-decoration: none;
+				font-weight: bold;
+			}
+			.grid-item {
+				justify-content: center;
+				padding: 7% 0;
+				background-repeat: no-repeat;
+				cursor: pointer;
+				border-radius: $border-radius;
+				@include medidas(100%, 100%);
+				position: relative;
+				overflow: hidden;
+				background-image: url('../img/img-home.webp');
+				&::before {
+					content: '';
+					position: absolute;
+					top: 0;
+					left: 0;
+					@include medidas(100%, 100%);
+					background-color: #00000000;
+					transition: background-color 0.3s ease;
+					z-index: 1;
+				}
+				&:hover {
+					&::before {
+						background-color: #00000080;
+					}
+				}
+				>* {
+				position: relative;
+				z-index: 2;
+				}
+			}	
+		}
     }
     footer {
         color: $footer-text-color;
