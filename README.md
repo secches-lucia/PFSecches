@@ -2,7 +2,9 @@
 
 REPOSITORY: https://github.com/secches-lucia/PFSecches.git
 
-PAGES: https://secches-lucia.github.io/PFSecches/
+HOSTING: 
+    - Infinity Free: pf-secches.infinityfreeapp.com
+    - Github Pages: https://secches-lucia.github.io/PFSecches/
 
 Se usó Bootstrap para el footer.
 
